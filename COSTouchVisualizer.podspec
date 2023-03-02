@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "COSTouchVisualizer"
-  s.version          = "1.0.6"
+  s.version          = "1.0.7"
   s.summary          = "Visualize iOS finger touches, gestures and holds on external displays"
   s.description      = <<-DESC
 			Touch Screen Visualizer visualizes your touches, gestures, and holds on
@@ -11,14 +11,13 @@ Pod::Spec.new do |s|
 			The library also lets you customize the color and opacity of and border
 			of the touch circles.
                        DESC
-  s.homepage         = "https://github.com/conopsys/COSTouchVisualizer"
+  s.homepage         = "https://github.com/multitracks/COSTouchVisualizer"
   s.screenshots      = "https://raw.githubusercontent.com/conopsys/COSTouchVisualizer/master/screenshot-drag.png", "https://raw.githubusercontent.com/conopsys/COSTouchVisualizer/master/screenshot-press.png"
   s.license          = 'MIT'
   s.author           = { "Joe Blau" => "josephblau@gmail.com" }
-  s.source           = { :git => "https://github.com/conopsys/COSTouchVisualizer.git", :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/joe_blau'
+  s.source           = { :git => "https://github.com/multitracks/COSTouchVisualizer.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '6.0'
+  s.platform     = :ios, '12.4'
 
   s.requires_arc = true
 
