@@ -221,26 +221,30 @@ static const NSTimeInterval COSTouchVisualizerWindowRemoveDelay = 0.2;
     if (touchView == nil || [touchView isFadingOut]) {
         return;
     }
-
-    BOOL animationsWereEnabled = [UIView areAnimationsEnabled];
-
-    if (animated) {
-        [UIView setAnimationsEnabled:YES];
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:self.touchContactConfig.fadeDuration];
-    }
-
-    touchView.frame = CGRectMake(touchView.center.x - touchView.frame.size.width,
-                                 touchView.center.y - touchView.frame.size.height,
-                                 touchView.frame.size.width * 2, touchView.frame.size.height * 2);
-
-    touchView.alpha = 0.0;
-
-    if (animated) {
-        [UIView commitAnimations];
-        [UIView setAnimationsEnabled:animationsWereEnabled];
-    }
-
+	
+	BOOL animationsWereEnabled = [UIView areAnimationsEnabled];
+	CGFloat newAlpha = 0.0;
+	
+	CGRect newFrame = CGRectMake(touchView.center.x - touchView.frame.size.width,
+								 touchView.center.y - touchView.frame.size.height,
+								 touchView.frame.size.width * 2, touchView.frame.size.height * 2);
+	
+	if (animated) {
+		[UIView setAnimationsEnabled:YES];
+		
+		[UIView animateWithDuration:self.touchContactConfig.fadeDuration animations:^{
+			touchView.frame = newFrame;
+			touchView.alpha = newAlpha;
+			
+		} completion:^(BOOL finished) {
+			[UIView setAnimationsEnabled:animationsWereEnabled];
+		}];
+		
+	} else {
+		touchView.frame = newFrame;
+		touchView.alpha = newAlpha;
+	}
+	
     touchView.fadingOut = YES;
     [touchView performSelector:@selector(removeFromSuperview)
                     withObject:nil
