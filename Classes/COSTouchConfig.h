@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, COSTouchConfigTpye) {
-    COSTouchConfigTpyeContact,
-    COSTouchConfigTpyeRipple,
+typedef NS_ENUM(NSUInteger, COSTouchConfigType) {
+	COSTouchConfigTypeContact,
+	COSTouchConfigTypeRipple,
 };
 
 @interface COSTouchConfig : NSObject
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, COSTouchConfigTpye) {
 @property (nonatomic, nullable) UIColor *strokeColor;
 @property (nonatomic, nullable) UIColor *fillColor;
 
--(nonnull instancetype)initWithTouchConfigType:(COSTouchConfigTpye)configType NS_DESIGNATED_INITIALIZER;
+-(nonnull instancetype)initWithTouchConfigType:(COSTouchConfigType)configType NS_DESIGNATED_INITIALIZER;
 -(nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
