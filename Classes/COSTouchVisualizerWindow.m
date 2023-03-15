@@ -227,7 +227,7 @@ static const NSTimeInterval COSTouchVisualizerWindowRemoveDelay = 0.2;
 	
 	CGRect newFrame = CGRectMake(touchView.center.x - touchView.frame.size.width,
 								 touchView.center.y - touchView.frame.size.height,
-								 touchView.frame.size.width * 2, touchView.frame.size.height * 2);
+								 touchView.frame.size.width * 2.0, touchView.frame.size.height * 2.0);
 	
 	if (animated) {
 		[UIView setAnimationsEnabled:YES];
