@@ -15,19 +15,22 @@ static const NSTimeInterval COSTouchConfigRippleFadeDuration = 0.2;
 
 @implementation COSTouchConfig
 
--(instancetype)initWithTouchConfigType:(COSTouchConfigTpye)configType {
-    self = [super init];
+-(instancetype)initWithTouchConfigType:(COSTouchConfigType)configType {
+	self = [super init];
+	
     if (self) {
         switch (configType) {
-            case COSTouchConfigTpyeContact:
+			case COSTouchConfigTypeContact:
                 [self _configureContact];
                 break;
-            case COSTouchConfigTpyeRipple:
+				
+            case COSTouchConfigTypeRipple:
                 [self _configureRipple];
                 break;
         }
     }
-    return self;
+	
+	return self;
 }
 
 #pragma mark - Private
