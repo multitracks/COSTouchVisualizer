@@ -13,17 +13,14 @@ static const CGFloat COSTouchImageFactorySideSize = 50.0f;
 
 @implementation COSTouchImageFactory
 
-+(UIImage *)imageWithTouchConfig:(COSTouchConfig *)touchConfig {
-    UIImage *touchImage = ({
-        UIImage *image = [UIImage new];
-        UIBezierPath *clipPath = [UIBezierPath bezierPathWithRect:CGRectMake(0.0f,
-                                                                             0.0f,
-                                                                             COSTouchImageFactorySideSize,
-                                                                             COSTouchImageFactorySideSize)];
-        UIGraphicsBeginImageContextWithOptions(clipPath.bounds.size, NO, 0);
-        CGPoint center = CGPointMake(COSTouchImageFactorySideSize / 2.0f,
-                                      COSTouchImageFactorySideSize / 2.0f);
-        
++ (UIImage*)imageWithTouchConfig:(COSTouchConfig*)touchConfig {
+	UIImage* touchImage = ({
+		CGRect clipRect = CGRectMake(0.0f, 0.0f, COSTouchImageFactorySideSize, COSTouchImageFactorySideSize);
+		UIBezierPath* clipPath = [UIBezierPath bezierPathWithRect:clipRect];
+		
+		UIGraphicsBeginImageContextWithOptions(clipPath.bounds.size, NO, 0);
+		CGPoint center = CGPointMake(COSTouchImageFactorySideSize / 2.0f, COSTouchImageFactorySideSize / 2.0f);
+		
         UIBezierPath *drawPath = [UIBezierPath bezierPathWithArcCenter:center
                                                                 radius:22.0
                                                             startAngle:0
@@ -37,12 +34,14 @@ static const CGFloat COSTouchImageFactorySideSize = 50.0f;
         [drawPath stroke];
         [drawPath fill];
         [clipPath addClip];
-        image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-
-        image;
-    });
-    return touchImage;
+		
+		UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+		UIGraphicsEndImageContext();
+		
+		image;
+	});
+	
+	return touchImage;
 }
 
 @end
